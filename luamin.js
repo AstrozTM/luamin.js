@@ -4952,12 +4952,7 @@ function UglifyVariables(globalScope, rootScope, renameGlobals) {
     })
 }
 
-
-// hi
-
-let watermark = `--[[\n\tcode generated using luamin.js, Herrtt#3868\n--]]`
-
-let luaminp = {}
+let luaminp = {} 
 
 luaminp.Minify = function(scr, options) {
 
@@ -4975,7 +4970,7 @@ luaminp.Minify = function(scr, options) {
     StripAst(ast)
 
     let result = PrintAst(ast)
-    result = `${watermark}\n\n${result}`
+    result = `{result}`
 
     return result
 }
@@ -4995,7 +4990,7 @@ luaminp.Beautify = function(scr, options) {
     FormatAst(ast)
 
     let result = PrintAst(ast)
-    result = `${watermark}\n\n${result}`
+    result = `${result}`
 
     return result
 }
@@ -5049,17 +5044,7 @@ luaminp.Uglify = function(src1, options) {
     UglifyVariables(glb2, root2, options.RenameGlobals) // This is so fucking slow omg
 
     let result = PrintAst(ast2)
-    result = `${watermark}\n\n${result}`
+    result = `${result}`
 
     return result
 }
-
-try {
-    if (module != null && module.exports != null) {
-        module.exports.Beautify = luaminp.Beautify
-        module.exports.Minify = luaminp.Minify
-        module.exports.Uglify = luaminp.Uglify
-    }
-} catch(err) {/*idontcareboutthis*/}
-
-//export {luaminp as luamin};
